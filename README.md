@@ -36,16 +36,18 @@ cd /tmp
 wget https://github.com/emberrenewed/Ubuntu-Clipboard/releases/latest/download/clipd_0.1.0_all.deb
 sudo apt install -y ./clipd_0.1.0_all.deb
 
-systemctl --user enable --now clipd.service
+clipd-setup
 ```
 
-That's it. The daemon now starts automatically every time you log in.
+`clipd-setup` runs once per user — it enables the background daemon at
+login and registers the **Super + B** shortcut for you automatically.
 
-To open the window press **Super + B**, or type `clipd` in a terminal.
+Press **Super + B** to open Clipd, or type `clipd` in a terminal.
 
-> First time using `Super + B`?
-> Open **Settings → Keyboard → View and Customize Shortcuts → Custom Shortcuts**, click **+**, set
-> **Name** = `Open Clipd`, **Command** = `clipd`, **Shortcut** = `Super + B`. Save.
+> **Did Super+B not work the first time?**
+> Log out and log back in (or reboot) so GNOME Shell picks up the new
+> shortcut. Or open **Settings → Keyboard → View and Customize Shortcuts
+> → Custom Shortcuts → Open Clipd** and re-set the binding manually.
 
 ---
 
@@ -202,6 +204,15 @@ GNOME 42+ doesn't ship a system tray. Install the **AppIndicator and KStatusNoti
 You're running `apt install ./clipd_0.1.0_all.deb` from a folder that doesn't have the .deb file. Either `cd` to the folder where you downloaded it, or use the full path:
 ```bash
 sudo apt install /tmp/clipd_0.1.0_all.deb
+```
+</details>
+
+<details>
+<summary><b>App Center / Snap-Store shows "Unknown publisher"</b></summary>
+
+Ubuntu's snap-based App Center (`snap-store`) only recognises apps from the Snap Store. For sideloaded `.deb` files it can't read AppStream metadata and falls back to plain dpkg fields, so you see "Unknown publisher / Unknown date". This is a snap-store limitation, not a problem with the package — the metadata IS embedded in the .deb (developer: CodeAhmad, license: Proprietary, etc.) and shows correctly under the legacy `gnome-software` tool:
+```bash
+sudo apt install gnome-software
 ```
 </details>
 
