@@ -50,6 +50,15 @@ Press **Super + B** to open Clipd, or type `clipd` in a terminal.
 > → Custom Shortcuts → Open Clipd** and re-set the binding manually.
 
 ---
+## 🧹 Uninstall
+
+```bash
+systemctl --user disable --now clipd.service
+sudo apt remove -y clipd
+rm -rf ~/.local/share/clipd ~/.cache/clipd ~/.config/clipd ~/.local/state/clipd
+```
+
+---
 
 ## ✨ Features
 
@@ -158,15 +167,6 @@ Re-run the install block above. `apt` upgrades the package and restarts the daem
 
 ---
 
-## 🧹 Uninstall
-
-```bash
-systemctl --user disable --now clipd.service
-sudo apt remove -y clipd
-rm -rf ~/.local/share/clipd ~/.cache/clipd ~/.config/clipd ~/.local/state/clipd
-```
-
----
 
 ## 🐛 Troubleshooting
 
