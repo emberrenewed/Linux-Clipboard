@@ -27,13 +27,20 @@
 ### Flatpak (any Linux distro)
 
 The easiest way to run Clipd on **any** Linux desktop — GNOME, KDE, sway —
-on Wayland or X11:
+on Wayland or X11. Download `clipd.flatpak` from the
+[latest release](https://github.com/emberrenewed/Ubuntu-Clipboard/releases/latest),
+then:
 
 ```bash
-flatpak install -y flathub org.gnome.Platform//48 org.gnome.Sdk//48
-flatpak install --user io.github.clipd.Clipd
+flatpak install --user clipd.flatpak
 flatpak run io.github.clipd.Clipd
 ```
+
+Clipd itself is tiny — about **1 MB** to download, **6 MB** installed. The
+first install also pulls the shared GNOME runtime (~1 GB, downloaded once
+and reused by every GNOME Flatpak app you ever install). You do **not** need
+the multi-GB SDK; that is only for building. If you already run other GNOME
+Flatpak apps, the runtime is likely installed and Clipd adds just a few MB.
 
 ### Ubuntu / Debian (.deb)
 
